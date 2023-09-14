@@ -386,12 +386,18 @@ export const detailSaleUpdateByDevice = async (topic: string, message) => {
     }
 
     // console.log(result.stationDetailId, result.vocono, result.nozzleNo);
+    try{
+      await addTankData({
+        stationDetailId: lastData[0].stationDetailId,
+        vocono: lastData[0].vocono,
+        nozzleNo: lastData[0].nozzleNo,
+      });
+  
+    }catch (e){
+      console.log(e)
+    }
 
-    await addTankData({
-      stationId: lastData[0].stationDetailId,
-      vocono: lastData[0].vocono,
-      nozzleNo: lastData[0].nozzleNo,
-    });
+    console.log('wkkkkkk')
 
     // cloud and balance calculation
     let checkDate = await getFuelBalance({

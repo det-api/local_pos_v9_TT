@@ -21,8 +21,8 @@ export const getTankDataCount = async () => {
 
 export const addTankData = async (body) => {
   try {
-    let url = config.get<string>("tankDataCloudUrl");
-    let tankRealTimeData = await axios.get(url);
+    let url = config.get<string>("tankDataUrl");
+    let tankRealTimeData = await axios.post(url);
 
     let saveData = {
       ...body,
@@ -40,7 +40,7 @@ export const addTankData = async (body) => {
 
     for (const ea of uploadData) {
       try {
-        let url = config.get<string>("detailsaleCloudUrl");
+        let url = config.get<string>("tankDataCloudUrl");
         let response = await axios.post(url, ea);
         if (response.status == 200) {
           await tankDataModel.findByIdAndUpdate(ea._id, {
@@ -51,6 +51,7 @@ export const addTankData = async (body) => {
         console.log(e.response.status);
       }
     }
+
   } catch (e) {
     throw new Error(e);
   }

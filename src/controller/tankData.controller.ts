@@ -16,7 +16,6 @@ export const getTankDataHandler = async (
     let pageNo = Number(req.params.page);
     let dateOfDay = req.query.dateOfDay;
 
-    console.log("wk");
 
     let { count, data } = await tankDataPaginate(pageNo, {
       dateOfDay,

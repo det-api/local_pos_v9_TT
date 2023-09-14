@@ -33,7 +33,7 @@ export interface tankDataDocument extends mongoose.Document {
 }
 
 const tankDataSchema = new Schema({
-  stationId: {
+  stationDetailId : {
     type: Schema.Types.ObjectId,
     ref: "stationDetail",
     required: true,

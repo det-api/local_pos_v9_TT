@@ -76,17 +76,17 @@ userRoute.patch(
   "/add/role",
   validateToken2,
   validateAll(userRoleSchema),
-  roleValidator(["admin", "installer"]),
+  // roleValidator(["admin", "installer"]),
   hasAnyPermit(["add"]),
   userAddRoleHandler
 );
 
 userRoute.patch(
   "/remove/role",
-  validateToken,
+  validateToken2,
   validateAll(userRoleSchema),
-  roleValidator(["admin"]),
-  hasAnyPermit(["delete"]),
+  roleValidator(["admin", "installer"]),
+  // hasAnyPermit(["delete"]),
   userRemoveRoleHandler
 );
 
@@ -102,10 +102,10 @@ userRoute.patch(
 
 userRoute.patch(
   "/remove/permit",
-  validateToken,
+  validateToken2,
   validateAll(userPermitSchema),
-  roleValidator(["admin"]),
-  hasAnyPermit(["delete"]),
+  // roleValidator(["admin", "installer"]),
+  // hasAnyPermit(["delete"]),
   userRemovePermitHandler
 );
 
